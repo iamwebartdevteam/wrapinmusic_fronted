@@ -190,7 +190,9 @@ const MusicTemplete = () => {
       {songData.length === 0 ? (
         ""
       ) : (
-        <AudioTrack
+       <>
+        
+         {/* <AudioTrack
           musiaChoose={musiaChoose}
           musicIndex={musicIndex}
           setMusicIndex={setMusicIndex}
@@ -202,7 +204,8 @@ const MusicTemplete = () => {
           setCurrentTrack={setCurrentTrack}
           setIsPlaying={setIsPlaying}
           isPlaying={isPlaying}
-        />
+        /> */}
+       </>
       )}
     </>
   );
