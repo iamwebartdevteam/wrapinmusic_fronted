@@ -24,6 +24,7 @@ import * as API from "../api/index";
 import CataDetails from "../pages/CataDetails";
 import Payment from "../pages/Payment";
 import SongDetails from "../pages/SongDetails";
+import MusicTemplete from "../pages/MusicTemplete";
 const AppRouter = () => {
   const tracks = [
     {
@@ -137,6 +138,8 @@ const AppRouter = () => {
                   <Route path="/contact-us" element={<Contact />} />
 
                   <Route path="/song-list" element={<CategoryDetails />} />
+                  <Route path="/song-details" element={<MusicTemplete />} />
+                  
                   <Route
                     path="/message-placement"
                     element={<MessagePlacePage />}

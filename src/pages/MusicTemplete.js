@@ -8,7 +8,7 @@ import { MESSAGE, TOKEN_CODE } from "../schemas/Validation";
 import AudioTrack from "../components/AudioTrack";
 import CommonCata from "../components/CommonCata";
 import CataDetails from "./CataDetails";
-const CategoryDetails = () => {
+const MusicTemplete = () => {
   const [musicIndex, setMusicIndex] = useState("");
   const [songData, setSongData] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -166,11 +166,11 @@ const CategoryDetails = () => {
                               item.artwork
                             )
                           }
-                          to="/song-details"
+                          to="/voice-message"
                           class="cart_btn"
                           state={{ songId: item.id }}
                         >
-                          <i class="fa fa-eye" aria-hidden="true"></i>
+                          <i class="fa fa-plus" aria-hidden="true"></i>
                         </Link>
                       </li>
                     </ul>
@@ -208,4 +208,4 @@ const CategoryDetails = () => {
   );
 };
 
-export default CategoryDetails;
+export default MusicTemplete;
