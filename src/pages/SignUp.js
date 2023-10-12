@@ -11,7 +11,6 @@ const initialValues = {
   name: "",
   email: "",
   password: "",
-  phone: "1234567896",
   confirmPassword: "",
 };
 const SignUp = ({ setIsLogin }) => {

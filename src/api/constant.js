@@ -5,7 +5,7 @@ export const TIMEZONE = "America/Los_Angeles";
 export const NOIMG = image;
 export const IMG = "https://wrappedinmusic.webbersunited.com/backend/";
 // ? ====== BASE URL ======
-export const URL = "https://wrappedinmusic.webbersunited.com:3001/api/frontend";
+export const URL = "https://webarttechnology.co.in/frontend";
 
 export const SIGNUP = `${URL}/users`;
 export const CATAGORIES = `${URL}/category`;
