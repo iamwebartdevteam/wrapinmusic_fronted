@@ -32,7 +32,7 @@ const SignUp = ({ setIsLogin }) => {
     console.log("values", values);
     const response = await API.user_registration(values);
     console.log("response", response);
-    if (response.data.success === 1) {
+    if (response.data.data.success === 1) {
       setIsEmail(1);
       const headerObj = {
         Authorization: `Bearer ${response.data.token_code}`,
@@ -51,11 +51,13 @@ const SignUp = ({ setIsLogin }) => {
         otp: otp,
       };
       const response = await API.otp_varification(reqObj);
-      if (response.data.success === 1) {
+      console.log("response", response);
+      if (response.data.data.success === 1) {
         setIsLogin(true);
-        navigate("/my-account");
+        //navigate("/my-account");
+        MESSAGE(response.data.data.msg);
       } else {
-        MESSAGE(response.data.msg);
+        MESSAGE(response.data.data.msg);
       }
     } catch (error) {}
   };
@@ -87,7 +89,7 @@ const SignUp = ({ setIsLogin }) => {
             {isEmail === 0 ? (
               <>
                 <h2>Create an account</h2>
-                <form onSubmit={handleSubmit}>
+                <form>
                   <div class="form-group">
                     <input
                       type="text"
@@ -164,7 +166,9 @@ const SignUp = ({ setIsLogin }) => {
                       </>
                     ) : null}
                   </div>
-                  <button class="ms_btn">register now</button>
+                  <button onClick={handleSubmit} class="ms_btn">
+                    register now
+                  </button>
                 </form>
                 <p>
                   Already Have An Account? <Link to="/login">login here</Link>
