@@ -21,6 +21,7 @@ const Login = ({ setIsLogin }) => {
   const loginSubmit = async (value) => {
     try {
       const response = await API.user_login(value);
+      console.log("response", response);
       if (response.data.data.success === 1) {
         const headerObj = {
           Authorization: `Bearer ${response.data.token_code}`,
@@ -34,7 +35,6 @@ const Login = ({ setIsLogin }) => {
       } else {
         MESSAGE(response.data.msg);
       }
-      console.log("response", response);
     } catch (error) {}
   };
 

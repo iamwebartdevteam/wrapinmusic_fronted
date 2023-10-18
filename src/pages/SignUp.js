@@ -41,6 +41,8 @@ const SignUp = ({ setIsLogin }) => {
       MESSAGE(response.data.data.msg, 1);
 
       //localStorage.setItem("__userId", response.data.data._id);
+    } else {
+      MESSAGE(response.data.data.msg);
     }
   };
 
@@ -54,8 +56,8 @@ const SignUp = ({ setIsLogin }) => {
       console.log("response", response);
       if (response.data.data.success === 1) {
         setIsLogin(true);
-        //navigate("/my-account");
-        MESSAGE(response.data.data.msg);
+        navigate("/my-account");
+        MESSAGE(response.data.data.msg, 1);
       } else {
         MESSAGE(response.data.data.msg);
       }
