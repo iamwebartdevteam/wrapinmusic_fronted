@@ -39,8 +39,7 @@ const SignUp = ({ setIsLogin }) => {
       };
       localStorage.setItem("_tokenCode", JSON.stringify(headerObj));
       MESSAGE(response.data.data.msg, 1);
-
-      //localStorage.setItem("__userId", response.data.data._id);
+      localStorage.setItem("__userId", response.data.data._id);
     } else {
       MESSAGE(response.data.data.msg);
     }
