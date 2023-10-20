@@ -19,7 +19,7 @@ const EditProfile = ({ formData, handalerChanges }) => {
       console.log("reqObj", reqObj);
       const response = await API.getuser_update(reqObj, header);
       console.log("response", response);
-      if (response.data.success === 1) {
+      if (response.data.data.success === 1) {
         MESSAGE(response.data.data.msg, 1);
       }
     } catch (error) {}
