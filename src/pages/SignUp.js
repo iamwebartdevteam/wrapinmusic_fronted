@@ -39,7 +39,7 @@ const SignUp = ({ setIsLogin }) => {
       };
       localStorage.setItem("_tokenCode", JSON.stringify(headerObj));
       MESSAGE(response.data.data.msg, 1);
-      localStorage.setItem("__userId", response.data.data._id);
+      localStorage.setItem("__userId", response.data.data.id);
     } else {
       MESSAGE(response.data.data.msg.email);
     }
@@ -167,9 +167,7 @@ const SignUp = ({ setIsLogin }) => {
                       </>
                     ) : null}
                   </div>
-                  <button onClick={submitButton} class="ms_btn">
-                    register now
-                  </button>
+                  <button class="ms_btn">register now</button>
                 </form>
                 <p>
                   Already Have An Account? <Link to="/login">login here</Link>

@@ -2,6 +2,7 @@ import React from "react";
 import * as API from "../api/index";
 import { toast } from "react-toastify";
 import { USASTATE } from "../commonData/staticData";
+import { MESSAGE } from "../schemas/Validation";
 const EditProfile = ({ formData, handalerChanges }) => {
   const userdataUpdate = async () => {
     const header = localStorage.getItem("_tokenCode");
@@ -19,17 +20,7 @@ const EditProfile = ({ formData, handalerChanges }) => {
       const response = await API.getuser_update(reqObj, header);
       console.log("response", response);
       if (response.data.success === 1) {
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "success",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        MESSAGE(response.data.data.msg, 1);
       }
     } catch (error) {}
   };
