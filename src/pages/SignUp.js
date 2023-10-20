@@ -41,7 +41,7 @@ const SignUp = ({ setIsLogin }) => {
       MESSAGE(response.data.data.msg, 1);
       localStorage.setItem("__userId", response.data.data._id);
     } else {
-      MESSAGE(response.data.data.msg);
+      MESSAGE(response.data.data.msg.email);
     }
   };
 
@@ -90,7 +90,7 @@ const SignUp = ({ setIsLogin }) => {
             {isEmail === 0 ? (
               <>
                 <h2>Create an account</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div class="form-group">
                     <input
                       type="text"
@@ -167,7 +167,7 @@ const SignUp = ({ setIsLogin }) => {
                       </>
                     ) : null}
                   </div>
-                  <button onClick={handleSubmit} class="ms_btn">
+                  <button onClick={submitButton} class="ms_btn">
                     register now
                   </button>
                 </form>

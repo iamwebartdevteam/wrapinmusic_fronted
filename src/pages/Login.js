@@ -30,10 +30,10 @@ const Login = ({ setIsLogin }) => {
         localStorage.setItem("isLogin", true);
         setIsLogin(localStorage.getItem("isLogin"));
         localStorage.setItem("__userId", response.data.data.id);
-        MESSAGE(response.data.msg, 1);
+        MESSAGE(response.data.data.msg, 1);
         navigate("/my-account");
       } else {
-        MESSAGE(response.data.msg);
+        MESSAGE(response.data.data.msg);
       }
     } catch (error) {}
   };
