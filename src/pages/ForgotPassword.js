@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { forGotSchema } from "../schemas/Validation";
+import { MESSAGE, forGotSchema } from "../schemas/Validation";
 import * as API from "../api/index";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -25,35 +25,14 @@ const ForgotPassword = ({ setIsLogin }) => {
   const loginSubmit = async (value) => {
     try {
       const response = await API.user_forgotPass(value);
-      console.log("response", response);
-      if (response.data.success === 1) {
+      console.log("responseaaa", response);
+      if (response.data.data.success === 1) {
         setIsEmail(1);
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "success",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        MESSAGE(response.data.data.msg, 1);
         //navigate("/my-account");
       } else {
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "error",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        MESSAGE(response.data.data.msg);
       }
-      console.log("response", response);
     } catch (error) {}
   };
 
@@ -66,32 +45,12 @@ const ForgotPassword = ({ setIsLogin }) => {
       console.log("reqObj", reqObj);
       const response = await API.otp_varification(reqObj);
       console.log("response", response);
-      if (response.data.success === 1) {
+      if (response.data.data.success === 1) {
         setIsEmail(3);
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "success",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        MESSAGE(response.data.data.msg, 1);
         //navigate("/my-account");
       } else {
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "error",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        MESSAGE(response.data.data.msg);
       }
     } catch (error) {}
   };

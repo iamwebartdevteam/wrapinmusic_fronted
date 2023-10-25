@@ -43,7 +43,7 @@ export const user_forgotPass = async (data) => {
 
 export const forgotPass_new = async (data) => {
   try {
-    const url = c.SIGNUP + "/reset-password";
+    const url = c.SIGNUP + "/resetpassword";
     const res = await axios.post(url, data);
     return res;
   } catch (e) {

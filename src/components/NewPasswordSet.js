@@ -27,21 +27,12 @@ const NewPasswordSet = ({ email }) => {
       ...values,
       ...data,
     };
+    console.log("values", values);
     try {
       const response = await API.forgotPass_new(newPassdata);
       console.log("response", response);
-      if (response.data.success === 1) {
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "success",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+      if (response.data.data.success === 1) {
+        toast(response.data.data.msg, 1);
         navigate("/login");
       }
     } catch (error) {}

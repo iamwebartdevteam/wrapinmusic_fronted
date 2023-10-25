@@ -3,6 +3,7 @@ import { Await, useNavigate } from "react-router";
 import EditProfile from "./EditProfile";
 import * as API from "../api/index";
 import ChangesPassword from "./ChangesPassword";
+import { Link } from "react-router-dom";
 const initialValues = {
   name: "",
   email: "",
@@ -74,7 +75,7 @@ const MyAccount = ({ setIsLogin }) => {
                 </span>
               </div>
               <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-6">
                   <h1>{formData.name}</h1>
                   <p>
                     <i class="bi bi-globe"></i> {formData.city},{formData.state}{" "}
@@ -85,7 +86,7 @@ const MyAccount = ({ setIsLogin }) => {
                     Lorem Ipsum
                   </h6> */}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6 text-end">
                   <div class="sclntwrk">
                     <ul>
                       {/* <li>
@@ -94,10 +95,10 @@ const MyAccount = ({ setIsLogin }) => {
                         </a>
                       </li> */}
                       <li>
-                        <a href="mailto:info@demo.com">
+                        <Link to={`mailto:${formData.email}`}>
                           <i class="fa fa-envelope-o" aria-hidden="true"></i>{" "}
                           {formData.email}
-                        </a>
+                        </Link>
                       </li>
                       {/* <li>
                         <a href="#">
