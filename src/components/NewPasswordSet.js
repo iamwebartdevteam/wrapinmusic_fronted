@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React from "react";
-import { passwordSchema } from "../schemas/Validation";
+import { MESSAGE, passwordSchema } from "../schemas/Validation";
 import * as API from "../api/index";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -32,8 +32,8 @@ const NewPasswordSet = ({ email }) => {
       const response = await API.forgotPass_new(newPassdata);
       console.log("response", response);
       if (response.data.data.success === 1) {
-        toast(response.data.data.msg, 1);
-        navigate("/login");
+        MESSAGE(response.data.data.msg, 1);
+        //navigate("/login");
       }
     } catch (error) {}
   };

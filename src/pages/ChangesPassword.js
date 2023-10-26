@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React from "react";
-import { passwordChangeSchema } from "../schemas/Validation";
+import { MESSAGE, passwordChangeSchema } from "../schemas/Validation";
 import * as API from "../api/index";
 import { toast } from "react-toastify";
 const initialValues = {
@@ -22,22 +22,12 @@ const ChangesPassword = () => {
       ...values,
       id,
     };
-
+    console.log("newPassdata", newPassdata);
     try {
       const response = await API.changePassword(newPassdata, header);
       console.log("response", response);
-      if (response.data.success === 1) {
-        toast(response.data.msg, {
-          position: "top-right",
-          autoClose: 5000,
-          type: "success",
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+      if (response.data.data.success === 1) {
+        MESSAGE(response.data.data.msg, 1);
       }
     } catch (error) {}
   };

@@ -21,6 +21,7 @@ const MyAccount = ({ setIsLogin }) => {
   const logout = () => {
     localStorage.removeItem("_tokenCode");
     localStorage.removeItem("isLogin");
+    localStorage.removeItem("__userId");
     setIsLogin(localStorage.removeItem("isLogin"));
     if (localStorage.getItem("isLogin") === null) {
       navigate("/login");
