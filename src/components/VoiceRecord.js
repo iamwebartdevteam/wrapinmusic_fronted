@@ -19,7 +19,7 @@ const VoiceRecord = ({
           noiseSuppression: true,
           echoCancellation: true,
         }}
-        //downloadOnSavePress={false}
+        downloadOnSavePress={true}
         downloadFileExtension="mp4"
       />
       <div className="checkBok">
