@@ -8439,3 +8439,9 @@ input[type="range"]:active::-moz-range-thumb {
   text-transform: capitalize;
   margin-bottom: 50px;
 }
+#recordAudioss {
+  margin-top: 25px;
+}
+#recordAudio {
+  margin-top: 25px;
+}

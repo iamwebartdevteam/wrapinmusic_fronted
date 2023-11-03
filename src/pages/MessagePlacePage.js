@@ -11,21 +11,7 @@ const MessagePlacePage = () => {
   const [secound, setSecound] = useState("");
   const [position, setPosition] = useState("");
   const [voiceMessage, setVoiceMessage] = useState("");
-  const inputHandaler = () => {
-    if (!miniut || !secound || !position) {
-      MESSAGE("Please choose data");
-    }
-    const reqObj = {
-      duration: miniut + ":" + secound,
-      add_position: position,
-    };
-    console.log("reeqObj", reqObj);
 
-    localStorage.setItem("_messagePalace", JSON.stringify(reqObj));
-  };
-  const desabel = !miniut || !secound || !position;
-  console.log("desabel", desabel);
-  console.log(miniut);
   const recorderControls = useAudioRecorder();
   const addAudioElement = (blob) => {
     const url = URL.createObjectURL(blob);
@@ -39,9 +25,24 @@ const MessagePlacePage = () => {
       //console.log(base64data);
       setVoiceMessage(base64data);
     };
-
     const audioTag = document.querySelector("#recordAudioss");
+    audioTag.appendChild(audio);
+  };
 
+  const recorderControlss = useAudioRecorder();
+  const addAudioElements = (blob) => {
+    const url = URL.createObjectURL(blob);
+    const audio = document.createElement("audio");
+    audio.src = url;
+    audio.controls = true;
+    var reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function () {
+      var base64data = reader.result;
+      //console.log(base64data);
+      setVoiceMessage(base64data);
+    };
+    const audioTag = document.querySelector("#recordAudio");
     audioTag.appendChild(audio);
   };
   return (
@@ -54,9 +55,18 @@ const MessagePlacePage = () => {
               <h3 className="headingC">
                 <i class="bi bi-music-note-beamed"></i> Just the Way You Are
               </h3>
-              <div className="row">
+              <div className="row justify-content-center">
+                <div className="col-md-5">
+                  <select className="form-control">
+                    <option>--- Select ---</option>
+                    <option>Use Prerecorded</option>
+                    <option>Record My Own</option>
+                  </select>
+                </div>
+              </div>
+              <div className="row align-items-center">
                 <div className="col-md-4">
-                  <div class="form-group text-center">
+                  <div class="form-groupd">
                     <AudioRecorder
                       recorderControls={recorderControls}
                       onRecordingComplete={addAudioElement}
@@ -64,11 +74,10 @@ const MessagePlacePage = () => {
                         noiseSuppression: true,
                         echoCancellation: true,
                       }}
-                      downloadOnSavePress={true}
-                      downloadFileExtension="mp4"
+                      downloadOnSavePress={false}
+                      downloadFileExtension="mp3"
                     />
                     <div id="recordAudioss"></div>
-                    {/* <label for="c1"> At the Start</label> */}
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -79,43 +88,28 @@ const MessagePlacePage = () => {
                   </select>
                 </div>
                 <div className="col-md-4">
-                  <div class="form-group text-center">
+                  <div class="form-groups">
                     <AudioRecorder
-                      recorderControls={recorderControls}
-                      onRecordingComplete={addAudioElement}
+                      recorderControls={recorderControlss}
+                      onRecordingComplete={addAudioElements}
                       audioTrackConstraints={{
                         noiseSuppression: true,
                         echoCancellation: true,
                       }}
-                      downloadOnSavePress={true}
+                      downloadOnSavePress={false}
                       downloadFileExtension="mp4"
                     />
-                    <div id="recordAudioss"></div>
+                    <div id="recordAudio"></div>
                     {/* <label for="c1"> At the Start</label> */}
                   </div>
                 </div>
               </div>
 
               <div class="pro-form-btn text-center marger_top15">
-                {desabel ? (
-                  <Link onClick={inputHandaler} class="ms_btn">
-                    Submit
-                  </Link>
-                ) : (
-                  <Link
-                    onClick={inputHandaler}
-                    to="/order-details"
-                    class="ms_btn"
-                  >
-                    Submit
-                  </Link>
-                )}
-                {/* <Link
-                  onClick={inputHandaler}
-                  to="/order-details"
-                  class="ms_btn"
-                >
-                  Submit
+                <button class="ms_btn">Process Start</button>
+
+                {/* <Link to="/order-details" class="ms_btn">
+                  Process Start
                 </Link> */}
               </div>
             </div>
